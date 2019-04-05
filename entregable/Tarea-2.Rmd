@@ -1,0 +1,52 @@
+---
+title: "Tarea 2"
+output: 
+  pdf_document: 
+    keep_tex: yes
+---
+
+#Carga de datos
+Se procede a realizar la carga de datos en R, a fin de poder realizar los cálculos necesarios sobre los mismos
+```{r}
+valores <- c(7,7,15,11,9,12,17,12,18,18,14,18,18,19,19,19,25,22,19,23,7,10,11,15,11)
+porcentajes <- as.factor(c(rep(c("15%", "20%", "25%", "30%", "35%"), each=5)))
+summary(valores)
+summary(porcentajes)
+```
+
+Para verificacion, se calculan los totales por tratamiento, los promedios por tratamiento, el gran totaly el gran promedio:
+
+* Promedio por tratamiento:
+```{r}
+tapply(valores, porcentajes, mean)
+```
+
+* Totales por tratamiento
+```{r}
+tapply(valores, porcentajes, sum)
+```
+
+* Gran Total
+```{r}
+sum(valores)
+```
+
+* Gran Promedio
+```{r}
+mean(valores)
+```
+
+Además, se grafincan los las muestras para ver su comportamiento:
+```{r}
+boxplot(valores ~ porcentajes)
+```
+
+Es claro ver que hay algunas variables atípicas en algunos de los tratamientos. Casos de esto se puedne ver en el tratamiento de 35%, y en el que tiene el tratamiento de 25%. Esto debido a que los valores mas altos o bajos distan mucho respecto al promedio obtenido. Además se denota cierta tendencia a que la mayoría de los datos donde la fibra tenia 30% de algodón fue la que más presión resistió, pues la mayoría de sus observaciones estan por encima de los otros tratamientos, apreciable por donde se encuentra la caja en el gráfico anterior. 
+
+#Calculo del Anova
+Se calcula el Anova en R:
+```{r}
+fm = aov(lm(valores ~ porcentajes))
+summary(fm)
+```
+Según los resultados obtenidos, el valor p de la prueba de hipótesis realizada, muestra una significacia menor que 0.001, lo que indica que existe evidencia para rechazar la hipótesis nula, que indica que todas las medias de todas las muestras son las mismas, en favor de la hipótesis alternativa, la cual indica que al menos una de medias es diferente. 
