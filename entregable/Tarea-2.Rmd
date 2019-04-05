@@ -49,4 +49,7 @@ Se calcula el Anova en R:
 fm = aov(lm(valores ~ porcentajes))
 summary(fm)
 ```
-Según los resultados obtenidos, el valor p de la prueba de hipótesis realizada, muestra una significacia menor que 0.001, lo que indica que existe evidencia para rechazar la hipótesis nula, que indica que todas las medias de todas las muestras son las mismas, en favor de la hipótesis alternativa, la cual indica que al menos una de medias es diferente. 
+Según los resultados obtenidos, el valor p de la prueba de hipótesis realizada, muestra una significacia menor que 0.05, lo que indica que existe evidencia para rechazar la hipótesis nula, que indica que todas las medias de todas las muestras son las mismas, en favor de la hipótesis alternativa, la cual indica que al menos una de medias es diferente. 
+
+#Validación de los tratamientos
+El ANOVA indica, por medio de su significancia, que existe al menos un par que es diferente al resto, sin embargo, el modelo no indica cual de ellos es. 
