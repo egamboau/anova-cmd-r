@@ -25,6 +25,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={Tarea 2},
+            pdfauthor={Eduardo Gamboa; Manuel Marín; Megan Alexa Mora; Francisco Sánchez},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -115,8 +116,9 @@
   \title{Tarea 2}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{}
-  \preauthor{}\postauthor{}
+  \author{Eduardo Gamboa \\ Manuel Marín \\ Megan Alexa Mora \\ Francisco Sánchez}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
   \date{}
   \predate{}\postdate{}
 
@@ -259,6 +261,27 @@ Se calcula el Anova en R:
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{verbatim}
+
+Según los resultados obtenidos, el valor p de la prueba de hipótesis
+realizada, muestra una significacia menor que 0.05, lo que indica que
+existe evidencia para rechazar la hipótesis nula. En otras palabras, se
+atribuye al diferencia de los valores a los cambios del tratamiento, y
+no por las muestras tomadas durante los experimentos.
+
+\section{Validación de los
+tratamientos}\label{validacion-de-los-tratamientos}
+
+El ANOVA indica, por medio de su significancia, que existe al menos un
+par que es diferente al resto, sin embargo, el modelo no indica cual de
+ellos es.
+
+\section*{Referencias}\label{referencias}
+\addcontentsline{toc}{section}{Referencias}
+
+\hypertarget{refs}{}
+\hypertarget{ref-anova-r}{}
+García, Francisco. n.d. ``Análisis de La Varianza (ANOVA) Con R.''
+\url{https://biocosas.github.io/R/050_anova.html}.
 
 
 \end{document}

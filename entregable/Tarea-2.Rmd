@@ -3,6 +3,20 @@ title: "Tarea 2"
 output: 
   pdf_document: 
     keep_tex: yes
+author:
+  - Eduardo Gamboa
+  - Manuel Marín
+  - Megan Alexa Mora
+  - Francisco Sánchez
+references:
+  - id: anova-r
+    title: Análisis de la Varianza (ANOVA) con R
+    author: 
+    - family: García
+      given: Francisco
+    URL: https://biocosas.github.io/R/050_anova.html
+nocite: |
+  @anova-r
 ---
 
 #Carga de datos
@@ -49,7 +63,9 @@ Se calcula el Anova en R:
 fm = aov(lm(valores ~ porcentajes))
 summary(fm)
 ```
-Según los resultados obtenidos, el valor p de la prueba de hipótesis realizada, muestra una significacia menor que 0.05, lo que indica que existe evidencia para rechazar la hipótesis nula, que indica que todas las medias de todas las muestras son las mismas, en favor de la hipótesis alternativa, la cual indica que al menos una de medias es diferente. 
+Según los resultados obtenidos, el valor p de la prueba de hipótesis realizada, muestra una significacia menor que 0.05, lo que indica que existe evidencia para rechazar la hipótesis nula. En otras palabras, se atribuye al diferencia de los valores a los cambios del tratamiento, y no por las muestras tomadas durante los experimentos. 
 
 #Validación de los tratamientos
-El ANOVA indica, por medio de su significancia, que existe al menos un par que es diferente al resto, sin embargo, el modelo no indica cual de ellos es. 
+El ANOVA indica, por medio de su significancia, que existe al menos un par que es diferente al resto, sin embargo, el modelo no indica cual de ellos es.
+
+#Referencias
