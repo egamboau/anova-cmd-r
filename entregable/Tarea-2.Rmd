@@ -15,8 +15,14 @@ references:
     - family: García
       given: Francisco
     URL: https://biocosas.github.io/R/050_anova.html
+  - id: anova-df
+    title: Degrees of Freedom Tutorial
+    author: 
+    - family: Dotsch
+      given: Ron
+    URL: http://www.rondotsch.nl/degrees-of-freedom/
 nocite: |
-  @anova-r
+  @anova-r, @anova-df
 ---
 
 #Carga de datos
@@ -63,7 +69,17 @@ Se calcula el Anova en R:
 fm = aov(lm(valores ~ porcentajes))
 summary(fm)
 ```
-Según los resultados obtenidos, el valor p de la prueba de hipótesis realizada, muestra una significacia menor que 0.05, lo que indica que existe evidencia para rechazar la hipótesis nula. En otras palabras, se atribuye al diferencia de los valores a los cambios del tratamiento, y no por las muestras tomadas durante los experimentos. 
+Se procede a analizar la tabla anterior:
+
+##Df:
+Se muestran los grados de libertad de los grupos analizados, y los residuos de las muestras. En este caso, para el grupo de porcentajes, se puede ver que para llegar al promedio obtenido, se pueden escoger solamente cuatro valores abiertamente, y el quinto solo puede ser un valor. Dicho valor se calcula con la siguiente formula:
+
+Similarmente,para los residuos, el grado de libertad es de 20, esto siguiendo con la misma logica anterior, excepto que para todas las observaciones, y no calculado por grupo. 
+
+$df = n - 1$
+
+Según los resultados obtenidos, el valor p de la prueba de hipótesis realizada, muestra una significacia menor que 0.05, lo que indica que existe evidencia para rechazar la hipótesis nula (que todas las muestras tienen la misma media, o que vienen de la misma población estadística) en favor de la hipótesis alternativa (Al menos un par de observaciones tiene una diferencia en las media).
+
 
 #Validación de los tratamientos
 El ANOVA indica, por medio de su significancia, que existe al menos un par que es diferente al resto, sin embargo, el modelo no indica cual de ellos es.
