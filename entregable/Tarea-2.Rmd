@@ -15,8 +15,13 @@ references:
     - family: García
       given: Francisco
     URL: https://biocosas.github.io/R/050_anova.html
+  - id: meansq
+    title: Within Mean Square 
+    author: 
+    - family: No conocido.
+    URL: https://www.statisticshowto.datasciencecentral.com/within-mean-square/
 nocite: |
-  @anova-r
+  @meansq
 ---
 
 #Carga de datos
@@ -67,5 +72,16 @@ Según los resultados obtenidos, el valor p de la prueba de hipótesis realizada
 
 #Validación de los tratamientos
 El ANOVA indica, por medio de su significancia, que existe al menos un par que es diferente al resto, sin embargo, el modelo no indica cual de ellos es.
+
+\section{Mean Square}
+
+Lo primero que tenemos que definir es cómo se calcula el cuadrado medio o Mean SQ. Este valor se calcula tomando el dato de la suma de cuadrados o Sum SQ y dividiéndolo entre los grados de libertad. 
+Estos grados de libertad también se calculan como la cantidad de tratamientos o factores menos 1. En el caso de este experimento, tenemos 5 factores o tratamientos, definidos por los valores 15%, 20% 25%, 30% y 35%, por lo que nuestros grados de libertad son 4. 
+El cuadrado medio, según [ref] "es un estimado de la varianza de la población". En palabras más simples, representa qué tanto
+varía el cuadrado de una muestra con respecto a la media. 
+
+\section{F value}
+
+
 
 #Referencias
