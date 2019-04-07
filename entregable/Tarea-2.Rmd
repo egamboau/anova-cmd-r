@@ -20,6 +20,12 @@ references:
     author: 
     - family: No conocido.
     URL: https://www.statisticshowto.datasciencecentral.com/within-mean-square/
+  - id: fvalue
+    title: GraphPad Statistics Guide, F ratio and ANOVA table
+    author:
+    - family: J.H.
+    given: Zar
+    URL: https://www.graphpad.com/guides/prism/7/statistics/index.htm?f_ratio_and_anova_table_(one-way_anova).htm
   - id: anova-df
     title: Degrees of Freedom Tutorial
     author: 
@@ -27,7 +33,7 @@ references:
       given: Ron
     URL: http://www.rondotsch.nl/degrees-of-freedom/
 nocite: |
-  @anova-r, @anova-df, @meansq
+  @anova-r, @anova-df, @meansq, @fvalue
 ---
 
 #Carga de datos
@@ -105,11 +111,10 @@ Esta columna muestra el valor P de la pruaba de hipótesis a realizar.Según los
 
 Lo primero que tenemos que definir es cómo se calcula el cuadrado medio o Mean SQ. Este valor se calcula tomando el dato de la suma de cuadrados o Sum SQ y dividiéndolo entre los grados de libertad. 
 Estos grados de libertad también se calculan como la cantidad de tratamientos o factores menos 1. En el caso de este experimento, tenemos 5 factores o tratamientos, definidos por los valores 15%, 20% 25%, 30% y 35%, por lo que nuestros grados de libertad son 4. 
-El cuadrado medio, según TEST "es un estimado de la varianza de la población". En palabras más simples, representa qué tanto
-varía el cuadrado de una muestra con respecto a la media. 
+El cuadrado medio, es "un estimado de la varianza de la población". En palabras más simples, representa qué tanto varía el cuadrado de una muestra con respecto a la media. 
 
 \section{F value}
 
-
+En cuanto al valor F que se muestra en los resultados, se podría interpretar a grandes rasgos como "la relación entre dos valores cuadrados medios" \cite{fvalue}. Cuando la hipótesis nula es verdadera, o sea cuando las medias de todas las observaciones es 0, entonces el valor de F se acerca a 1.0. En otro caso, cuando el valor de F es mayor a 1.0 significa que las muestras posiblemente sean de diferentes poblaciones. 
 
 #Referencias
