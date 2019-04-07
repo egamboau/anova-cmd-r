@@ -30,8 +30,6 @@ Se procede a realizar la carga de datos en R, a fin de poder realizar los cálcu
 ```{r}
 valores <- c(7,7,15,11,9,12,17,12,18,18,14,18,18,19,19,19,25,22,19,23,7,10,11,15,11)
 porcentajes <- as.factor(c(rep(c("15%", "20%", "25%", "30%", "35%"), each=5)))
-summary(valores)
-summary(porcentajes)
 ```
 
 Para verificacion, se calculan los totales por tratamiento, los promedios por tratamiento, el gran totaly el gran promedio:
@@ -72,16 +70,30 @@ summary(fm)
 Se procede a analizar la tabla anterior:
 
 ##Df:
-Se muestran los grados de libertad de los grupos analizados, y los residuos de las muestras. En este caso, para el grupo de porcentajes, se puede ver que para llegar al promedio obtenido, se pueden escoger solamente cuatro valores abiertamente, y el quinto solo puede ser un valor. Dicho valor se calcula con la siguiente formula:
+Se muestran los grados de libertad de los grupos analizados, y los residuos de las muestras. En este caso, para el grupo de porcentajes, se puede ver que para llegar al promedio obtenido, se pueden escoger solamente cuatro valores abiertamente, y el quinto solo puede ser un valor. ESto obedece a la formula $df = k - 1$ donde $k$ es el numero de muestras por tratamiento
 
-Similarmente,para los residuos, el grado de libertad es de 20, esto siguiendo con la misma logica anterior, excepto que para todas las observaciones, y no calculado por grupo. 
+Similarmente,para los residuos, el grado de libertad es de 20, esto siguiendo con la misma logica anterior, excepto que para todas las observaciones, y no calculado por grupo. Es decir, la fórmula esta vez es $df = n - k$ donde $n$ es el número de muestras en total, y $k$ el número de tratamientos 
 
-$df = n - 1$
+##Sum sq
+Esta columna describe la suma de los cuadrados observados en cada una de los factores y el residuo. En este caso, se tiene una suma de cuadrados para el tratamiento de $118.94$. Este valor representa cuanto los valores se desvían de la media. Entre mas alto sea este valor, mayor variabilidad en los datos. Se calcula con la formula:
 
-Según los resultados obtenidos, el valor p de la prueba de hipótesis realizada, muestra una significacia menor que 0.05, lo que indica que existe evidencia para rechazar la hipótesis nula (que todas las muestras tienen la misma media, o que vienen de la misma población estadística) en favor de la hipótesis alternativa (Al menos un par de observaciones tiene una diferencia en las media).
+$$\sum_{j=1}^J n_j(\overline{y}_j - \overline{\overline{y}})^2$$
+Donde:
 
+* $J$ es el numero de tratamietos totales
+* $n_j$ es la cantidad de muestras que tiene el tramiento j-esimo
+* $\overline{y}_j$ es la media del tratamiento j-esimo
+* $\overline{\overline{y}}$ es la media de todos los datos
 
-#Validación de los tratamientos
-El ANOVA indica, por medio de su significancia, que existe al menos un par que es diferente al resto, sin embargo, el modelo no indica cual de ellos es.
+Similarmente, se presenta la suma de cuadrados de los residuos, en este caso, con un valor de 8.09. En este caso, este valor dicta que tanto varían las observaciones de la media de cada uno de los grupos o tratamientos. Se calcula de la siguiente manera
+$$\sum_{j=1}^{J}\sum_{i=1}^{n_j}(y_{ij}- \overline{y_j})^2$$
+Donde:
+
+* $J$ es el numero de tratamietos totales
+* $n_j$ es la cantidad de muestras que tiene el tramiento j-esimo
+* $\overline{y}_j$ es la media del tratamiento j-esimo
+
+## Pr(>F)
+Esta columna muestra el valor P de la pruaba de hipótesis a realizar.Según los resultados obtenidos, se muestra una significacia menor que 5%, lo que indica que existe evidencia para rechazar la hipótesis nula (que todas las muestras tienen la misma media, o que vienen de la misma población estadística) en favor de la hipótesis alternativa (Al menos un par de observaciones tiene una diferencia en las media).
 
 #Referencias
