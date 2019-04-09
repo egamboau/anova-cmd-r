@@ -35,13 +35,13 @@ references:
   - id: anova-shapiro-wilk
     title: Test de Shapiro-Wilk
     author: 
-    - family: No conocido.
-    URL: https://vivaelsoftwarelibre.com/test-de-shapiro-wilk-para-contrastar-la-normalidad-en-r-commander/
+    - family: NA.
+    URL: https://bit.ly/2ULJmsl
   - id: anova-bartlett
     title: Test de Bartlett
     author: 
-    - family: No conocido.
-    URL: https://vivaelsoftwarelibre.com/test-de-bartlett-para-contrastar-la-homocedasticidad-de-mas-de-2-muestras-usando-r-commander/
+    - family: NC.
+    URL: https://bit.ly/2Utsqrp
 nocite: |
   @anova-r, @anova-df, @meansq, @fvalue, @anova-shapiro-wilk, @anova-bartlett
 ---
@@ -151,7 +151,7 @@ qqnorm(fm$residuals, pch = 19, col = "gray50")
 qqline(fm$residuals)
 ```
 
-Cuanto más se aproximen los datos a una normal, más alineados están los puntos entorno a la recta. Vemos una anormalidad en el primer punto que se encuentra muy alejado de la recta, pero los demas se encuentran relativamente cerca.
+lCuanto más se aproximen los datos a una normal, más alineados están los puntos entorno a la recta. Vemos una anormalidad en el primer punto que se encuentra muy alejado de la recta, pero los demas se encuentran relativamente cerca.
 
 \subsection{Test de Shapiro-Wilk}
 
