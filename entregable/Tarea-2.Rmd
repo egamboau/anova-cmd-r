@@ -43,7 +43,7 @@ valores <- c(7,7,15,11,9,12,17,12,18,18,14,18,18,19,19,19,25,22,19,23,7,10,11,15
 porcentajes <- as.factor(c(rep(c("15%", "20%", "25%", "30%", "35%"), each=5)))
 ```
 
-Para verificacion, se calculan los totales por tratamiento, los promedios por tratamiento, el gran totaly el gran promedio:
+Para verificacion, se calculan los totales por tratamiento, los promedios por tratamiento, el gran total y el gran promedio:
 
 * Promedio por tratamiento:
 ```{r}
@@ -67,10 +67,10 @@ mean(valores)
 
 Además, se grafincan los las muestras para ver su comportamiento:
 ```{r}
-boxplot(valores ~ porcentajes)
+boxplot(valores ~ porcentajes, col = c("gray"), ylab = "Observación (libras/pulgada cuadrada)")
 ```
 
-Es claro ver que hay algunas variables atípicas en algunos de los tratamientos. Casos de esto se puedne ver en el tratamiento de 35%, y en el que tiene el tratamiento de 25%. Esto debido a que los valores mas altos o bajos distan mucho respecto al promedio obtenido. Además se denota cierta tendencia a que la mayoría de los datos donde la fibra tenia 30% de algodón fue la que más presión resistió, pues la mayoría de sus observaciones estan por encima de los otros tratamientos, apreciable por donde se encuentra la caja en el gráfico anterior. 
+Es claro ver que hay algunas variables atípicas en algunos de los tratamientos. Casos de esto se pueden ver en el tratamiento de 35%, y en el que tiene el tratamiento de 25%. Esto debido a que los valores mas altos o bajos distan mucho respecto al promedio obtenido. Además se denota cierta tendencia a que la mayoría de los datos donde la fibra tenia 30% de algodón fue la que más presión resistió, pues la mayoría de sus observaciones estan por encima de los otros tratamientos, apreciable por donde se encuentra la caja en el gráfico anterior. 
 
 #Calculo del Anova
 Se calcula el Anova en R:
@@ -81,9 +81,9 @@ summary(fm)
 Se procede a analizar la tabla anterior:
 
 ##Df:
-Se muestran los grados de libertad de los grupos analizados, y los residuos de las muestras. En este caso, para el grupo de porcentajes, se puede ver que para llegar al promedio obtenido, se pueden escoger solamente cuatro valores abiertamente, y el quinto solo puede ser un valor. ESto obedece a la formula $df = k - 1$ donde $k$ es el numero de muestras por tratamiento
+Se muestran los grados de libertad de los grupos analizados, y los residuos de las muestras. En este caso, para el grupo de porcentajes, se puede ver que para llegar al promedio obtenido, se pueden escoger solamente cuatro valores abiertamente, y el quinto solo puede ser un valor. Esto obedece a la formula $df = k - 1$ donde $k$ es el numero de muestras por tratamiento.
 
-Similarmente,para los residuos, el grado de libertad es de 20, esto siguiendo con la misma logica anterior, excepto que para todas las observaciones, y no calculado por grupo. Es decir, la fórmula esta vez es $df = n - k$ donde $n$ es el número de muestras en total, y $k$ el número de tratamientos 
+Similarmente, para los residuos, el grado de libertad es de 20, esto siguiendo con la misma lógica anterior, excepto que para todas las observaciones, y no calculado por grupo. Es decir, la fórmula esta vez es $df = n - k$ donde $n$ es el número de muestras en total, y $k$ el número de tratamientos. 
 
 ##Sum sq
 Esta columna describe la suma de los cuadrados observados en cada una de los factores y el residuo. En este caso, se tiene una suma de cuadrados para el tratamiento de $118.94$. Este valor representa cuanto los valores se desvían de la media. Entre mas alto sea este valor, mayor variabilidad en los datos. Se calcula con la formula:
@@ -105,7 +105,7 @@ Donde:
 * $\overline{y}_j$ es la media del tratamiento j-esimo
 
 ## Pr(>F)
-Esta columna muestra el valor P de la pruaba de hipótesis a realizar.Según los resultados obtenidos, se muestra una significacia menor que 5%, lo que indica que existe evidencia para rechazar la hipótesis nula (que todas las muestras tienen la misma media, o que vienen de la misma población estadística) en favor de la hipótesis alternativa (Al menos un par de observaciones tiene una diferencia en las media).
+Esta columna muestra el valor P de la prueba de hipótesis a realizar. Según los resultados obtenidos, se muestra una significacia menor que 5%, lo que indica que existe evidencia para rechazar la hipótesis nula (que todas las muestras tienen la misma media, o que vienen de la misma población estadística) en favor de la hipótesis alternativa (Al menos un par de observaciones tiene una diferencia en las media).
 
 \section{Mean Square}
 
@@ -115,6 +115,6 @@ El cuadrado medio, es "un estimado de la varianza de la población". En palabras
 
 \section{F value}
 
-En cuanto al valor F que se muestra en los resultados, se podría interpretar a grandes rasgos como "la relación entre dos valores cuadrados medios" \cite{fvalue}. Cuando la hipótesis nula es verdadera, o sea cuando las medias de todas las observaciones es 0, entonces el valor de F se acerca a 1.0. En otro caso, cuando el valor de F es mayor a 1.0 significa que las muestras posiblemente sean de diferentes poblaciones. 
+En cuanto al valor F que se muestra en los resultados, se podría interpretar a grandes rasgos como "la relación entre dos valores cuadrados medios" @fvalue. Cuando la hipótesis nula es verdadera, o sea cuando las medias de todas las observaciones es 0, entonces el valor de F se acerca a 1.0. En otro caso, cuando el valor de F es mayor a 1.0 significa que las muestras posiblemente sean de diferentes poblaciones. 
 
 #Referencias
