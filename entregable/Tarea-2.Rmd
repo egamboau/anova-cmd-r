@@ -32,8 +32,18 @@ references:
     - family: Dotsch
       given: Ron
     URL: http://www.rondotsch.nl/degrees-of-freedom/
+  - id: anova-shapiro-wilk
+    title: Test de Shapiro-Wilk
+    author: 
+    - family: No conocido.
+    URL: https://vivaelsoftwarelibre.com/test-de-shapiro-wilk-para-contrastar-la-normalidad-en-r-commander/
+  - id: anova-bartlett
+    title: Test de Bartlett
+    author: 
+    - family: No conocido.
+    URL: https://vivaelsoftwarelibre.com/test-de-bartlett-para-contrastar-la-homocedasticidad-de-mas-de-2-muestras-usando-r-commander/
 nocite: |
-  @anova-r, @anova-df, @meansq, @fvalue
+  @anova-r, @anova-df, @meansq, @fvalue, @anova-shapiro-wilk, @anova-bartlett
 ---
 
 #Carga de datos
@@ -116,5 +126,60 @@ El cuadrado medio, es "un estimado de la varianza de la población". En palabras
 \section{F value}
 
 En cuanto al valor F que se muestra en los resultados, se podría interpretar a grandes rasgos como "la relación entre dos valores cuadrados medios" @fvalue. Cuando la hipótesis nula es verdadera, o sea cuando las medias de todas las observaciones es 0, entonces el valor de F se acerca a 1.0. En otro caso, cuando el valor de F es mayor a 1.0 significa que las muestras posiblemente sean de diferentes poblaciones. 
+
+
+## Validacion del modelo ANOVA
+
+Para la validacion del modelo anova se necesita analizar tres supuestos:
+
+\section{Independencia}
+
+```{r}
+plot(fm$residuals)
+```
+
+En el grafico anterior no se observa que la nube de puntos siga una determinada forma funcional, por lo tanto existe independencia.
+
+\section{Normalidad}
+
+Los gráficos y descriptivos nos informan si se verifica la igualdad de varianzas en los grupos descritos:
+
+```{r}
+summary(fm$residuals)
+
+qqnorm(fm$residuals, pch = 19, col = "gray50") 
+qqline(fm$residuals)
+```
+
+Cuanto más se aproximen los datos a una normal, más alineados están los puntos entorno a la recta. Vemos una anormalidad en el primer punto que se encuentra muy alejado de la recta, pero los demas se encuentran relativamente cerca.
+
+\subsection{Test de Shapiro-Wilk}
+
+Este test se emplea para contrastar normalidad cuando el tamaño de la muestra es menor de 50. 
+
+```{r}
+shapiro.test(fm$residuals)
+```
+
+Cuando el p-valor es mayor que 0.05 (0.1818 > 0.05) podemos afirmar que nuestros datos se distribuyen siguiendo una normal.
+
+
+\section{Homocedasticidad}
+
+Es necesario contrastar la hipótesis de homocedasticidad, ésto es, la varianza de los residuos es constante y no varía en los diferentes niveles del factor. La falta de homocedasticidad se denomina heterocedasticidad. 
+Para detectar heterocedasticidad utilizamos el contraste de Bartlett. 
+
+
+```{r}
+bartlett.test(fm$residuals ~ porcentajes)
+```
+
+
+Como el p-valor es 0.9198, y éste es un valor mayor de 0.05, esto nos indica que nuestras muestras presentan varianzas iguales. Por lo tanto se cumple con la homocedasticidad.
+
+
+
+
+Debido a que se cumplen los 3 supuestos, podemos afirmar que el modelo ANOVA fue el adecuado para nuestra muestra.
 
 #Referencias
